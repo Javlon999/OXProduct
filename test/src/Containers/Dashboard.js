@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { PrivateRoute } from '../Containers/PrivateRoute'
 import { useSelector } from 'react-redux';
-import RegistrationForm from '../Pages/RegistrationUsers/RegistrationForm';
-
+import ComplexTable from '../Pages/Complex/ComplexTable';
+import SortFilterTable from '../Pages/SortFilterTable'
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Card, Drawer, List, CssBaseline, Typography, Divider, IconButton } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
@@ -142,7 +142,11 @@ const routes = [
 
   {
     path: '/dashboard/table',
-    main: () => <RegistrationForm />,
+    main: () => <ComplexTable />,
+  },
+  {
+    path: '/dashboard/SortFiltertable',
+    main: () => <SortFilterTable />,
   },
 ]
 
@@ -193,6 +197,14 @@ function Dashboard(props) {
               <ListItemIcon><AssignmentOutlinedIcon />
               </ListItemIcon>
               <ListItemText className={classes.SideBarWords} primary={'Product Table'} />
+            </ListItem>
+        </List>
+        
+        <List className={classes.SidebarColor}>
+            <ListItem button onClick={() => props.history.push('/dashboard/SortFiltertable')}  >
+              <ListItemIcon><AssignmentOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText className={classes.SideBarWords} primary={'Sort Filter Table'} />
             </ListItem>
           </List>
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { DataGrid } from "@material-ui/data-grid";
+import { CircularProgress } from '@material-ui/core';
 import moment from "moment";
 import { getFormData } from "../../Redux/Actions";
 
@@ -18,7 +19,7 @@ const DataTable = () => {
     const timer = setTimeout(() => {
       setLoading(false);
       dispatch(getFormData());
-    }, 500);
+    }, 100);
     setLoading(true);
     return () => clearTimeout(timer);
   }, []);
@@ -113,13 +114,14 @@ const DataTable = () => {
       <div style={{ height: 400, width: "100%", backgroundColor: "#ffff" }}>
         {loading ? (
           <div className="spinner-border" role="status">
-            <span className="sr-only">loading</span>
+          <CircularProgress/>
           </div>
         ) : (
           <DataGrid
-            rows={rows}
+            rows={rows ?rows:  loading}
             columns={columns}
               pageSize={5}
+        
             columnBuffer={2}
             rowsPerPageOptions={[10]}
           />

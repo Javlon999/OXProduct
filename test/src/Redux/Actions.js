@@ -31,7 +31,7 @@ export function loginFetch({ password, username }) {
         (response) => {
           dispatch(success(response.data));
           sessionStorage.setItem("test", JSON.stringify(response.data));
-          history.push("/dashboard/table");
+          history.push("/dashboard");
         },
         (error) => {
           console.log(error);
