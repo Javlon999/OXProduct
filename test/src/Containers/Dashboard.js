@@ -167,7 +167,7 @@ function Dashboard(props) {
   }
 
   if (!test) {
-    return <Link to="/login">Please log in</Link>;
+    return <Link to="/login">Please log In</Link>;
   }
 
   return (
